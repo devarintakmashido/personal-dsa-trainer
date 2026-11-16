@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Pattern Trainer | Active Recall & Spaced Repetition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gray: {
+                            750: '#2d3748',
+                            850: '#1a202c',
+                            900: '#111827',
+                            950: '#0b0f19',
+                        },
+                        primary: '#3b82f6',
+                        primary_dark: '#2563eb'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .preserve-ws {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563; 
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col font-sans antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-900 border-b border-gray-800 sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="app.navigate('dashboard')">
+                    <div class="bg-primary/20 p-2 rounded-lg text-primary border border-primary/30">
+                        <i class="fa-solid fa-brain text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight text-white">DSA Pattern Trainer</span>
+                        <span class="hidden sm:inline-block text-xs bg-gray-800 text-gray-400 px-2 py-0.5 rounded ml-2 border border-gray-700">Active Recall</span>
+                    </div>
+                </div>
+                <div class="flex space-x-2 sm:space-x-4">
+                    <button onclick="app.navigate('dashboard')" id="nav-dashboard" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-2 text-gray-300 hover:bg-gray-800 hover:text-white">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span class="hidden sm:inline">Dashboard</span>
+                    </button>
+                    <button onclick="app.navigate('practice')" id="nav-practice" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-2 text-gray-300 hover:bg-gray-800 hover:text-white">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <span>Practice Arena</span>
+                    </button>
+                    <button onclick="app.navigate('add')" id="nav-add" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-2 bg-primary hover:bg-primary_dark text-white shadow-sm">
+                        <i class="fa-solid fa-plus"></i>
+                        <span class="hidden sm:inline">Add Problem</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+    <!-- Main Content Area -->
+    <main id="app-content" class="flex-grow flex flex-col p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+        <!-- Dynamic Content Rendered Here -->
+    </main>
+
+    <script src="./app.js" defer></script>
+</body>
+</html>
